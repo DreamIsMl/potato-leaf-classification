@@ -1,0 +1,7 @@
+python
+numpy
+pandas
+seaborn
+matplotlib
+tenforflow
+sci-kit learn
