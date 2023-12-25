@@ -1,7 +1,6 @@
-python
+streamlit
 numpy
-pandas
-seaborn
-matplotlib
-tenforflow
-sci-kit learn
+Pillow
+tensorflow
+requests
+gitpython
