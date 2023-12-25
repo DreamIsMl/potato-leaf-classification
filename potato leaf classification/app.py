@@ -1,9 +1,18 @@
+import git
 import numpy as np
 import streamlit as st
 import tensorflow as tf
 from PIL import Image
 
-MODEL = tf.keras.models.load_model("F:\\class\\DeepLearning\\potato leaf classification\\1")
+# Update the existing repository
+repo_dir = "potato-leaf-classification"
+repo = git.Repo(repo_dir)
+origin = repo.remote(name='origin')
+origin.pull()
+
+# Load the model
+model_path = "potato leaf classification/1"
+MODEL = tf.keras.models.load_model(repo_dir + "/" + model_path)
 
 CLASS_NAMES = ["Early Blight", "Late Blight", "Healthy"]
 IMAGE_SIZE = (255, 255)
@@ -28,7 +37,9 @@ uploaded_file = st.file_uploader("Choose an image...", type="jpg")
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
-    st.image(image, caption="Uploaded Image.", use_column_width=True)
+    
+    # Adjust the width to control the size of the displayed image
+    st.image(image, caption="Uploaded Image.", use_column_width=True, width=150)
 
     if st.button("Predict"):
         st.write("Classifying...")
